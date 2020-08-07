@@ -14,7 +14,6 @@ import kotlin.collections.ArrayList
  * desc   :
  */
 class MainModel(application: Application) : ListViewModel(application) {
-    val mListData = MutableLiveData<List<String>>()
 
     override fun loadData() {
         AppUtils.postDelayed(Runnable {

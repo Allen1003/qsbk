@@ -1,7 +1,11 @@
 package com.allen.base.base.activity
 
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.allen.base.base.basic.model.BaseViewModel
+import com.allen.base.base.basic.model.ErrorState
+import com.allen.base.base.basic.model.LoadState
+import com.allen.base.base.basic.model.SuccessState
 import com.allen.base.utils.ClassUtil
 
 /**
@@ -16,6 +20,7 @@ open class BaseVmActivity<VM : BaseViewModel> : BaseNavActivity() {
 
     override fun initViews() {
         initViewModel()
+        initViewModelAction()
         super.initViews()
     }
 
@@ -27,6 +32,21 @@ open class BaseVmActivity<VM : BaseViewModel> : BaseNavActivity() {
         if (viewModelClass != null) {
             mViewModel = ViewModelProvider.AndroidViewModelFactory(application)
                 .create(viewModelClass)
+        }
+    }
+
+    protected fun initViewModelAction() {
+        mViewModel?.let { baseViewModel ->
+            baseViewModel.mStateLiveData.observe(this, Observer { stateActionState ->
+                when (stateActionState) {
+                    LoadState -> showLoading()
+                    SuccessState -> showContent()
+                    is ErrorState -> {
+                        showEmpty()
+                        stateActionState.message?.apply { showToast(this) }
+                    }
+                }
+            })
         }
     }
 }

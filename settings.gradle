@@ -1,3 +1,4 @@
+include ':lib_app'
 include ':lib_base'
 include ':app'
 rootProject.name = "qsbk"

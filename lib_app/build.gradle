@@ -1,0 +1,9 @@
+apply plugin: 'com.android.library'
+apply from: "../lib_build.gradle"
+
+
+dependencies {
+    implementation project(':lib_base')
+    implementation umeng_analytics
+    implementation umeng_common
+}
