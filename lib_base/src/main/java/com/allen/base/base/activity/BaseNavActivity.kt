@@ -1,8 +1,8 @@
 package com.allen.base.base.activity
 
-import android.view.View
-import com.allen.base.databinding.BaseActivityNavBinding
+import com.allen.base.R
 import com.allen.base.widget.PlaceholderView
+import kotlinx.android.synthetic.main.base_activity_nav.*
 import kotlinx.android.synthetic.main.base_layout_toolbar.*
 
 /**
@@ -13,10 +13,8 @@ import kotlinx.android.synthetic.main.base_layout_toolbar.*
  */
 open class BaseNavActivity : BaseActivity() {
 
-    private val mBinding by lazy { BaseActivityNavBinding.inflate(layoutInflater) }
-
-    override fun getPlaceholderView(): PlaceholderView? = mBinding.mPlaceholderView
-    override fun getLayoutView(): View = mBinding.root
+    override fun getPlaceholderView(): PlaceholderView? = mPlaceholderView
+    override fun getLayoutResID() = R.layout.base_activity_nav
 
     override fun initViews() {
         super.initViews()
@@ -24,10 +22,10 @@ open class BaseNavActivity : BaseActivity() {
         setShowToolBar(isShowToolBar())
         mDelegate.setBackIcon(toolbar, isShowBackIcon()) { onBackClick() }
         // 设置填充容器
-        if (mBinding.navLayout.childCount > 0) {
-            mBinding.navLayout.removeAllViews()
+        if (navLayout.childCount > 0) {
+            navLayout.removeAllViews()
         }
-        getContentView()?.let { mBinding.navLayout.addView(it) }
+        layoutInflater.inflate(getContentView(), navLayout)
     }
 
     /**
@@ -42,14 +40,14 @@ open class BaseNavActivity : BaseActivity() {
      * @param isShow 是否展示
      */
     private fun setShowToolBar(isShow: Boolean) {
-        setVisibility(mBinding.appBarLayout, isShow)
-        setVisibility(mBinding.statusView, isShow)
+        setVisibility(appBarLayout, isShow)
+        setVisibility(statusView, isShow)
     }
 
     /**
      * 子类继续填充内容容器布局
      */
-    protected open fun getContentView(): View? = null
+    protected open fun getContentView(): Int = 0
 
     /**
      * 是否展示ToolBar，如果设置为false则不展示。

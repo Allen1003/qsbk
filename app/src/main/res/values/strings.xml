@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">qsbk</string>
+    <string name="app_menu_info">糗事</string>
+    <string name="app_menu_dynamic">动态</string>
+    <string name="app_menu_live">直播</string>
+    <string name="app_menu_scrip">小纸条</string>
+    <string name="app_menu_me">我</string>
 </resources>

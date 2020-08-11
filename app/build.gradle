@@ -10,6 +10,7 @@ android {
         minSdkVersion MIN_SDK_VERSION as int
         targetSdkVersion TARGET_SDK_VERSION as int
         versionCode 1
+        multiDexEnabled true
 
         buildConfigField "Boolean", "ENV_LOG", properties['ENV_LOG']
         buildConfigField "Boolean", "TINKER_DEVICE", properties['TINKER_DEVICE']
@@ -20,4 +21,7 @@ android {
 dependencies {
     implementation project(':lib_base')
     implementation project(':lib_app')
+    implementation project(':module_info')
+    implementation project(':module_live')
+    implementation project(':module_user')
 }

@@ -11,8 +11,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.allen.base.base.basic.IView
 import com.allen.base.base.basic.ViewDelegate
-import com.allen.base.databinding.BaseActivityNavBinding
-import com.allen.base.databinding.BaseRecyclerViewBinding
 import com.allen.base.utils.StatusBarUtils
 import com.allen.base.widget.PlaceholderView
 
@@ -29,14 +27,14 @@ abstract class BaseActivity : AppCompatActivity(), IView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initPre()
-        setContentView(getLayoutView())
+        setContentView(getLayoutResID())
         mDelegate = ViewDelegate(this.window.decorView)
         initViews()
         initEvents()
         initData()
     }
 
-    abstract fun getLayoutView(): View
+    abstract fun getLayoutResID(): Int
 
     /**
      * 子类初始化View

@@ -19,6 +19,7 @@ abstract class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         mApplication = this
+        initBaseMainProcess()
     }
 
     override fun attachBaseContext(base: Context?) {

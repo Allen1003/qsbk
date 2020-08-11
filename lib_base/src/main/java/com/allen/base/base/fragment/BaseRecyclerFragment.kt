@@ -1,11 +1,8 @@
 package com.allen.base.base.fragment
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.allen.base.R
 import com.allen.base.base.basic.model.ListViewModel
-import com.allen.base.databinding.BaseActivityNavBinding
-import com.allen.base.databinding.BaseRecylerBinding
 import com.allen.base.utils.LayoutManagerUtil
 import com.allen.base.widget.IRecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -26,9 +23,7 @@ abstract class BaseRecyclerFragment<VM : ListViewModel, T> : BaseMvFragment<VM>(
     //数据源
     var mData = CopyOnWriteArrayList<T>()
 
-    private val mBinding by lazy { BaseRecylerBinding.inflate(layoutInflater) }
-
-    override fun getLayoutView(): View = mBinding.root
+    override fun getLayoutResID(): Int = R.layout.base_recyler
 
     //取得适配器
     abstract fun getAdapter(): BaseQuickAdapter<T, BaseViewHolder>

@@ -30,9 +30,6 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
-    viewBinding {
-        enabled = true
-    }
 }
 dependencies {
     kapt arouter_compiler

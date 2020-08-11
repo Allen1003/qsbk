@@ -31,8 +31,7 @@ abstract class BaseFragment : Fragment(), IView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mRootView = getLayoutView()
-        container?.addView(mRootView)
+        mRootView = inflater.inflate(getLayoutResID(), container, false)
         mDelegate = ViewDelegate(mRootView)
         return mRootView
     }
@@ -47,7 +46,7 @@ abstract class BaseFragment : Fragment(), IView {
 
     open fun initEvents() {}
 
-    abstract fun getLayoutView(): View
+    abstract fun getLayoutResID(): Int
 
     /**
      * 占位控件

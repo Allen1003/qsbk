@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
+import com.allen.base.base.fragment.BaseFragment
 import com.allen.base.utils.AppUtils
 import com.allen.base.utils.Preconditions
 import com.allen.base.utils.ToastUtils
@@ -71,7 +72,7 @@ object RouteHelper {
     fun obtainARouterFragment(path: String): Fragment? {
         Preconditions.checkNotNull(path, "Fragment路径不能为空")
         val obj = ARouter.getInstance().build(path).navigation() ?: return null
-        Preconditions.checkArgument(obj is Fragment, "加载目标不是BaseFragment")
+        Preconditions.checkArgument(obj is Fragment, "加载目标不是Fragment")
         return obj as Fragment
     }
 }

@@ -1,3 +1,6 @@
+include ':module_user'
+include ':module_live'
+include ':module_info'
 include ':lib_app'
 include ':lib_base'
 include ':app'
