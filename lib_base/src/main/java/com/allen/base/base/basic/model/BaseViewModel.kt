@@ -13,7 +13,7 @@ typealias EmitBlock<T> = suspend LiveDataScope<T>.() -> T
 
 typealias Cancel = (e: Exception) -> Unit
 
-abstract class BaseViewModel(application: Application) : AndroidViewModel(application) {
+abstract class BaseViewModel<T>(application: Application) : AndroidViewModel(application) {
 
     val mStateLiveData = MutableLiveData<StateActionEvent>()//通用事件模型驱动(如：显示对话框、取消对话框、错误提示)
 
@@ -47,5 +47,5 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
     }
 
 
-    abstract fun loadData()
+    abstract fun loadData(): LiveData<List<T>>
 }

@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 /**
  * 列表基类
  */
-abstract class BaseRecyclerActivity<VM : ListViewModel, T> : BaseVmActivity<VM>() {
+abstract class BaseRecyclerActivity<VM : ListViewModel<T>, T> : BaseVmActivity<VM, T>() {
 
     //当前适配器
     var mAdapter: BaseQuickAdapter<T, BaseViewHolder>? = null

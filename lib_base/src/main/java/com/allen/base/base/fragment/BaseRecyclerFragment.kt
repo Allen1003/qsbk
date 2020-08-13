@@ -1,5 +1,6 @@
 package com.allen.base.base.fragment
 
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.allen.base.R
 import com.allen.base.base.basic.model.ListViewModel
@@ -15,7 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 /**
  * 列表基类
  */
-abstract class BaseRecyclerFragment<VM : ListViewModel, T> : BaseMvFragment<VM>() {
+abstract class BaseRecyclerFragment<VM : ListViewModel<T>, T> : BaseMvFragment<VM, T>() {
 
     //当前适配器
     var mAdapter: BaseQuickAdapter<T, BaseViewHolder>? = null
@@ -40,9 +41,16 @@ abstract class BaseRecyclerFragment<VM : ListViewModel, T> : BaseMvFragment<VM>(
         getRecyclerView()?.setAdapter(mAdapter)
         getRecyclerView()?.setOnLoadMoreListener { onLoadMoreListener() }
         getRecyclerView()?.setOnRefreshListener { onRefreshListener() }
-        setErrorRetryListener { mViewModel?.loadData() }
+        setErrorRetryListener { loadData() }
         initRecyclerView()
         initView()
+        loadData()
+    }
+
+    private fun loadData() {
+        mViewModel?.loadData()?.observe(this, Observer {
+            showData(it)
+        })
     }
 
     //初始化列表控件
@@ -103,7 +111,12 @@ abstract class BaseRecyclerFragment<VM : ListViewModel, T> : BaseMvFragment<VM>(
     //下拉刷新
     open fun onRefreshListener() {
         mViewModel?.loadRefresh()
-        getRecyclerView()?.hideRefreshing()
+        loadData()
+    }
+
+    override fun showError(msg: String?) {
+        super.showError(msg)
+        getRecyclerView()?.hideRefreshing(false)
     }
 
     //显示页面空白

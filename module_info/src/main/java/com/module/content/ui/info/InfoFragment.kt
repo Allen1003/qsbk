@@ -2,8 +2,10 @@ package com.module.content.ui.info
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.allen.app.core.RouterHub
-import com.allen.base.base.fragment.BaseFragment
-import com.module.content.R
+import com.allen.app.data.bean.InfoBean
+import com.allen.base.base.fragment.BaseRecyclerFragment
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 /**
  * author : Allen
@@ -12,7 +14,6 @@ import com.module.content.R
  * desc   :
  */
 @Route(path = RouterHub.ROUTER_INFO_FRAGMENT)
-class InfoFragment : BaseFragment() {
-
-    override fun getLayoutResID(): Int = R.layout.info_fragment_content
+class InfoFragment : BaseRecyclerFragment<InfoViewModel, InfoBean>() {
+    override fun getAdapter(): BaseQuickAdapter<InfoBean, BaseViewHolder> = InfoAdapter()
 }

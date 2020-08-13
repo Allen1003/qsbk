@@ -14,7 +14,7 @@ import com.allen.base.utils.ClassUtil
  * time   : 14:50
  * desc   :
  */
-open class BaseVmActivity<VM : BaseViewModel> : BaseNavActivity() {
+open class BaseVmActivity<VM : BaseViewModel<T>, T> : BaseNavActivity() {
 
     protected var mViewModel: VM? = null
 
@@ -35,14 +35,14 @@ open class BaseVmActivity<VM : BaseViewModel> : BaseNavActivity() {
         }
     }
 
-    protected fun initViewModelAction() {
+    private fun initViewModelAction() {
         mViewModel?.let { baseViewModel ->
             baseViewModel.mStateLiveData.observe(this, Observer { stateActionState ->
                 when (stateActionState) {
                     LoadState -> showLoading()
                     SuccessState -> showContent()
                     is ErrorState -> {
-                        showEmpty()
+                        showError()
                         stateActionState.message?.apply { showToast(this) }
                     }
                 }

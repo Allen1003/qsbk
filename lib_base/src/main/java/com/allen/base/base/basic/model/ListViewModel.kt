@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.allen.base.base.basic.extras.plus
 import com.allen.base.base.basic.extras.post
 
-abstract class ListViewModel(application: Application) : BaseViewModel(application) {
+abstract class ListViewModel<K>(application: Application) : BaseViewModel<K>(application) {
     private val pagerNumber = MutableLiveData<Int>()
     val mListData = MutableLiveData<List<String>>()
 
