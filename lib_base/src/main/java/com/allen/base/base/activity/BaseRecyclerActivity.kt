@@ -1,8 +1,10 @@
 package com.allen.base.base.activity
 
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.allen.base.R
 import com.allen.base.base.basic.model.ListViewModel
+import com.allen.base.data.ListCommon
 import com.allen.base.utils.LayoutManagerUtil
 import com.allen.base.widget.IRecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -15,19 +17,20 @@ import java.util.concurrent.CopyOnWriteArrayList
 /**
  * 列表基类
  */
-abstract class BaseRecyclerActivity<VM : ListViewModel<T>, T> : BaseVmActivity<VM, T>() {
+abstract class BaseRecyclerActivity<VM : ListViewModel<T, K>, T : ListCommon<K>, K> :
+    BaseVmActivity<VM>() {
 
     //当前适配器
-    var mAdapter: BaseQuickAdapter<T, BaseViewHolder>? = null
+    var mAdapter: BaseQuickAdapter<K, BaseViewHolder>? = null
 
     //数据源
-    var mData = CopyOnWriteArrayList<T>()
+    var mData = CopyOnWriteArrayList<K>()
 
     //布局
     override fun getContentView() = R.layout.base_recyler
 
     //取得适配器
-    abstract fun getAdapter(): BaseQuickAdapter<T, BaseViewHolder>
+    abstract fun getAdapter(): BaseQuickAdapter<K, BaseViewHolder>
 
 
     final override fun initViews() {
@@ -42,9 +45,10 @@ abstract class BaseRecyclerActivity<VM : ListViewModel<T>, T> : BaseVmActivity<V
         getRecyclerView()?.setAdapter(mAdapter)
         getRecyclerView()?.setOnLoadMoreListener { onLoadMoreListener() }
         getRecyclerView()?.setOnRefreshListener { onRefreshListener() }
-        setErrorRetryListener { mViewModel?.loadData() }
+        setErrorRetryListener { loadData() }
         initRecyclerView()
         initView()
+        loadData()
     }
 
     //初始化列表控件
@@ -62,15 +66,22 @@ abstract class BaseRecyclerActivity<VM : ListViewModel<T>, T> : BaseVmActivity<V
         getRecyclerView()?.initViewParams()
     }
 
-    open fun showData(data: List<T>) {
+    private fun loadData() {
+        val page = mViewModel?.pagerNumber?.value ?: 1
+        mViewModel?.loadData(page)?.observe(this, Observer {
+            showData(it.items, it.hasMore)
+        })
+    }
+
+    open fun showData(data: List<K>?, hasMore: Boolean) {
         //如果是第一页则清除数据、翻页则不清除自动累计
         if (getRecyclerView()?.getPage() == getRecyclerView()?.getStartPage()) {
             mData.clear()
         }
-        mData.addAll(data)
+        data?.let { mData.addAll(it) }
         mAdapter?.setList(mData)
         //如果数据为空则显示空白占位图
-        getRecyclerView()?.hideRefreshing()
+        getRecyclerView()?.hideRefreshing(hasMore)
         if (mData.isEmpty()) {
             showEmpty()
         } else {
@@ -79,7 +90,7 @@ abstract class BaseRecyclerActivity<VM : ListViewModel<T>, T> : BaseVmActivity<V
     }
 
     //获取当前列表数据
-    protected fun getData(): List<T> {
+    protected fun getData(): List<K> {
         return mData
     }
 
@@ -98,14 +109,15 @@ abstract class BaseRecyclerActivity<VM : ListViewModel<T>, T> : BaseVmActivity<V
     //加载更多
     open fun onLoadMoreListener() {
         mViewModel?.loadMore()
-        getRecyclerView()?.hideRefreshing(false)
+        loadData()
     }
 
     //下拉刷新
     open fun onRefreshListener() {
         mViewModel?.loadRefresh()
-        getRecyclerView()?.hideRefreshing()
+        loadData()
     }
+
 
     //显示页面空白
     override fun showEmpty(msg: String?) {

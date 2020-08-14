@@ -10,6 +10,10 @@
     <color name="color_333333">#333333</color>
     <color name="color_666666">#666666</color>
     <color name="color_999999">#999999</color>
-    <color name="color_f2f2f2">#f2f2f2</color>
+    <color name="color_F2F2F2">#f2f2f2</color>
     <color name="color_FAFBFC">#FAFBFC</color>
+    <color name="color_FAFAFA">#FAFAFA</color>
+    <color name="color_E7E7E7">#E7E7E7</color>
+    <color name="color_FF682B">#FF682B</color>
+    <color name="color_F8F8F8">#F8F8F8</color>
 </resources>

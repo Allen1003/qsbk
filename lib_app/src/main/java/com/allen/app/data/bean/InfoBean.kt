@@ -1,35 +1,38 @@
 package com.allen.app.data.bean
 
+import com.allen.base.data.ListCommon
+
 /**
  * author : Allen
  * date   : 2020/08/13
  * time   : 16:32
  * desc   :
  */
-data class Info(
-    val hasMore: Boolean,
-    val items: List<InfoBean>
-//    val message: String
-)
+class Info : ListCommon<InfoBean>() {
+    override var items: List<InfoBean>?
+        get() = super.items
+        set(value) {}
+}
 
 data class InfoBean(
-//    val tag: String,
-//    val high_url: String,
-//    val pic_url: String,
-//    val hot_comment: HotComment?,
-//    val votes: Votes?,
-//    val pic_size: List<Int>,
-//    val share_url: String,
-    val content: String
-//    val state: String,
-//    val share_count: Int,
-//    val type: String,
-//    val format: String,
-//    val comments_count: Int,
-//    val allow_comment: Boolean,
-//    val low_url: String,
-//    val origin_url: String,
-//    val loop: Int
+    val tag: String,
+    val high_url: String,
+    val pic_url: String,
+    val hot_comment: HotComment?,
+    val votes: Votes?,
+    val pic_size: List<Int>,
+    val share_url: String,
+    val content: String,
+    val state: String,
+    val share_count: Int,
+    val type: String,
+    val format: String,
+    val comments_count: Int,
+    val allow_comment: Boolean,
+    val low_url: String,
+    val origin_url: String,
+    val user: User?,
+    val loop: Int
 )
 
 //神评

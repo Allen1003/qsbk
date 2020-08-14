@@ -2,10 +2,7 @@ package com.allen.base.base.fragment
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.allen.base.base.basic.model.BaseViewModel
-import com.allen.base.base.basic.model.ErrorState
-import com.allen.base.base.basic.model.LoadState
-import com.allen.base.base.basic.model.SuccessState
+import com.allen.base.base.basic.model.*
 import com.allen.base.utils.AppUtils
 import com.allen.base.utils.ClassUtil
 
@@ -15,7 +12,7 @@ import com.allen.base.utils.ClassUtil
  * time   : 10:13
  * desc   :
  */
-abstract class BaseMvFragment<VM : BaseViewModel<T>, T> : BaseFragment() {
+abstract class BaseMvFragment<VM : BaseModel> : BaseFragment() {
 
     protected var mViewModel: VM? = null
 

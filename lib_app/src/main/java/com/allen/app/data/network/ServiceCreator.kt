@@ -66,7 +66,8 @@ object ServiceCreator {
         override fun intercept(chain: Interceptor.Chain): Response {
             val original = chain.request()
             val request = original.newBuilder().apply {
-                header("Accept-Encoding", "identity")
+                header("Source", "android_11.10.5")
+                header("Uuid", "IMEI_e90596b6cb5d240fe0a4b6b5ebd582d1")
                 header("User-Agent", "qiushibalke_11.10.5_WIFI_auto_19")
             }.build()
             return chain.proceed(request)

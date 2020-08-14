@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/layoutUser"
+        layout="@layout/info_layout_user" />
+
+    <com.allen.base.widget.CollapsibleTextView
+        android:id="@+id/tvWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12sp"
+        app:collapsedLines="9"
+        app:collapsedText="点击展开"
+        android:textColor="@color/color_333333"
+        android:textSize="16sp"
+        app:suffixColor="@color/color_F8F8F8"
+        app:layout_constraintTop_toBottomOf="@+id/layoutUser" />
+</androidx.constraintlayout.widget.ConstraintLayout>

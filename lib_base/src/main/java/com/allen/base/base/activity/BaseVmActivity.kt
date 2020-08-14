@@ -2,10 +2,7 @@ package com.allen.base.base.activity
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.allen.base.base.basic.model.BaseViewModel
-import com.allen.base.base.basic.model.ErrorState
-import com.allen.base.base.basic.model.LoadState
-import com.allen.base.base.basic.model.SuccessState
+import com.allen.base.base.basic.model.*
 import com.allen.base.utils.ClassUtil
 
 /**
@@ -14,7 +11,7 @@ import com.allen.base.utils.ClassUtil
  * time   : 14:50
  * desc   :
  */
-open class BaseVmActivity<VM : BaseViewModel<T>, T> : BaseNavActivity() {
+open class BaseVmActivity<VM : BaseModel> : BaseNavActivity() {
 
     protected var mViewModel: VM? = null
 

@@ -3,6 +3,7 @@ package com.allen.app.data.network
 import com.allen.app.data.bean.Info
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 /**
  * author : Allen
@@ -14,6 +15,6 @@ interface APIService {
     /**
      * 首页专享列表
      */
-    @GET("article/newlist?new=1")
-    fun getNewList(): Call<Info>
+    @GET("article/newlist?")
+    fun getNewList(@Query("new") page: Int): Call<Info>
 }

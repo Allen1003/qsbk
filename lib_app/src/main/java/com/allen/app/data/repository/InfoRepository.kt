@@ -12,10 +12,10 @@ import kotlinx.coroutines.withContext
  */
 class InfoRepository(private val api: API) {
 
-    suspend fun getNewList() = getApiNewList()
+    suspend fun getNewList(page:Int) = getApiNewList(page)
 
-    private suspend fun getApiNewList() = withContext(Dispatchers.IO) {
-        val response = api.getNewList()
+    private suspend fun getApiNewList(page:Int) = withContext(Dispatchers.IO) {
+        val response = api.getNewList(page)
         response
     }
 

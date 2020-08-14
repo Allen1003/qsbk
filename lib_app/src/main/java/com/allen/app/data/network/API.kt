@@ -12,7 +12,7 @@ class API {
 
     private val api = ServiceCreator.create(APIService::class.java)
 
-    suspend fun getNewList() = api.getNewList().await()
+    suspend fun getNewList(page:Int) = api.getNewList(page).await()
 
     companion object {
 
