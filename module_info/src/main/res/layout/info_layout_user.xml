@@ -13,16 +13,17 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:contentDescription="@null"
-        android:src="@mipmap/ic_live_normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_live_normal" />
 
 
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:textColor="@color/color_666666"
         app:layout_constraintBottom_toTopOf="@+id/tvTitle"
         app:layout_constraintStart_toEndOf="@+id/ivUserAvatar"
@@ -42,6 +43,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="1dp"
         android:textColor="@color/color_999999"
         android:textSize="@dimen/dp_10"
@@ -56,15 +58,15 @@
         android:layout_height="15dp"
         android:layout_marginEnd="@dimen/dp_10"
         android:gravity="center"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
         android:text="关注"
-        android:textColor="@color/color_333333"
+        android:textColor="@color/color_808080"
         android:textSize="@dimen/dp_10"
         app:layout_constraintBottom_toBottomOf="@+id/ivUserAvatar"
         app:layout_constraintEnd_toStartOf="@+id/ivUserClose"
         app:layout_constraintTop_toTopOf="@+id/ivUserAvatar"
-        app:rv_backgroundColor="@color/color_E7E7E7"
+        app:rv_backgroundColor="@color/color_F4F4F4"
         app:rv_cornerRadius="8dp" />
 
     <ImageView

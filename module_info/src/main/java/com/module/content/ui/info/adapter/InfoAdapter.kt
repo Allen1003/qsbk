@@ -22,6 +22,7 @@ class InfoAdapter : BaseProviderMultiAdapter<InfoBean>() {
             "word" -> ProviderBean.PROVIDER_INFO_WORD
             "image" -> ProviderBean.PROVIDER_INFO_IMAGE
             "video" -> ProviderBean.PROVIDER_INFO_VIDEO
+            "gif" -> ProviderBean.PROVIDER_INFO_GIF
             else -> ProviderBean.PROVIDER_INFO_WORD
         }
     }

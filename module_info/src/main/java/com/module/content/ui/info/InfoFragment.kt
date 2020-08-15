@@ -7,6 +7,7 @@ import com.allen.app.data.bean.InfoBean
 import com.allen.base.base.fragment.BaseRecyclerFragment
 import com.allen.base.base.recycler.decorate.DividerItemDecoration
 import com.allen.base.utils.AppUtils
+import com.allen.base.utils.ViewUtils
 import com.module.content.R
 import com.module.content.ui.info.adapter.InfoAdapter
 
@@ -18,6 +19,13 @@ import com.module.content.ui.info.adapter.InfoAdapter
  */
 @Route(path = RouterHub.ROUTER_INFO_FRAGMENT)
 class InfoFragment : BaseRecyclerFragment<InfoViewModel, Info, InfoBean>() {
+
     override fun getAdapter() = InfoAdapter()
-    override fun getItemDivider() = DividerItemDecoration(AppUtils.getColor(R.color.color_F8F8F8), 1, 12, 12)
+
+    override fun getItemDivider() = DividerItemDecoration(
+        AppUtils.getColor(R.color.color_FAFAFA),
+        ViewUtils.dp2px(1),
+        ViewUtils.dp2px(16),
+        ViewUtils.dp2px(16)
+    )
 }

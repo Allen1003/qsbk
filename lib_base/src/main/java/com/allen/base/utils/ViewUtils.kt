@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.allen.base.base.basic.extras.isNoEmpty
 import com.allen.base.utils.ScreenUtils.getNavigationBarHeightIfRoom
 import kotlin.math.abs
 
@@ -47,17 +48,8 @@ object ViewUtils {
      * [TextView]
      * set TextView content. view is not null and content is not null.
      */
-    fun setText(view: TextView?, content: String) {
-        if (view != null) {
-            if (TextUtils.isEmpty(content)) {
-                setGone(view)
-            } else {
-                setVisible(view)
-                view.text = content
-            }
-        } else {
-            Log.e(TAG, "setText Warning： TextView is null ")
-        }
+    fun setText(view: TextView?, content: String?) {
+        view?.text = if(content.isNoEmpty()) content else ""
     }
 
     /**

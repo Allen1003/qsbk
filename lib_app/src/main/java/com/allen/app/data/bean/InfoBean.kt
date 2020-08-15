@@ -31,7 +31,7 @@ data class InfoBean(
     val allow_comment: Boolean,
     val low_url: String,
     val origin_url: String,
-    val user: User?,
+    val user: UserInfo?,
     val loop: Int
 )
 
@@ -39,12 +39,12 @@ data class InfoBean(
 data class HotComment(
     val like_count: Int,
     val content: String,
-    val user: User?,
+    val user: UserInfo?,
     val hot_comment_type: Int
 )
 
 //用户信息
-data class User(
+data class UserInfo(
     val uid: Int,
     val medium: String,
     val thumb: String,

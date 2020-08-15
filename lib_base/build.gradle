@@ -35,6 +35,7 @@ dependencies {
     api 'com.squareup.retrofit2:converter-scalars:2.5.0'
     api material
 
+    api 'jp.wasabeef:glide-transformations:4.1.0'
     api rxbus
     api glide
     api lottie

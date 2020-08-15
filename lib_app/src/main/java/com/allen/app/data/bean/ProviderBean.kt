@@ -8,8 +8,9 @@ package com.allen.app.data.bean
  */
 interface ProviderBean {
     companion object {
-        val PROVIDER_INFO_WORD = 1
-        val PROVIDER_INFO_IMAGE = 2
-        val PROVIDER_INFO_VIDEO = 3
+        const val PROVIDER_INFO_WORD = 1
+        const val PROVIDER_INFO_IMAGE = 2
+        const val PROVIDER_INFO_VIDEO = 3
+        const val PROVIDER_INFO_GIF = 4
     }
 }

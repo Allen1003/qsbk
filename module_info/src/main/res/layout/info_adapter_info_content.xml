@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+
+    <com.module.content.ui.info.widget.InfoUserView
+        android:id="@+id/infoUserView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.allen.base.widget.CollapsibleTextView
+        android:id="@+id/tvWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/color_333333"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:collapsedLines="9"
+        app:collapsedText="点击展开"
+        app:layout_constraintTop_toBottomOf="@+id/infoUserView"
+        app:suffixColor="@color/color_F8F8F8"
+        tools:text="哈哈"
+        tools:visibility="visible" />
+
+    <FrameLayout
+        android:id="@+id/infoContentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvWord" />
+
+
+    <com.allen.base.widget.round.RoundConstraintLayout
+        android:id="@+id/commonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:maxHeight="50dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/infoContentLayout"
+        app:rv_backgroundColor="@color/color_F7F7F7"
+        app:rv_cornerRadius="6dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@null" />
+    </com.allen.base.widget.round.RoundConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/commonLayout">
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -117,6 +117,12 @@ abstract class BaseRecyclerFragment<VM : ListViewModel<T, K>, T : ListCommon<K>,
         loadData()
     }
 
+    override fun showLoading() {
+        if (mViewModel?.pagerNumber?.value == 1) {
+            super.showLoading()
+        }
+    }
+
     override fun showError(msg: String?) {
         super.showError(msg)
         getRecyclerView()?.hideRefreshing(false)

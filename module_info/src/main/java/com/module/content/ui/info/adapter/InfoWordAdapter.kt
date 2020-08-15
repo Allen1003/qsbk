@@ -13,14 +13,13 @@ import com.module.content.R
  * time   : 13:41
  * desc   : 糗事 文本适配器
  */
-class InfoWordAdapter : BaseItemProvider<InfoBean>() {
+class InfoWordAdapter : InfoBaseAdapter() {
 
     override val itemViewType: Int = ProviderBean.PROVIDER_INFO_WORD
 
-    override val layoutId: Int = R.layout.info_adapter_info_word
+    override fun getContentView(): Int = R.layout.info_adapter_info_word
 
-    override fun convert(helper: BaseViewHolder, item: InfoBean) {
-        InfoUserConvert(helper, item)
-        helper.getView<CollapsibleTextView>(R.id.tvWord).fullString = item.content
+    override fun convertChild(helper: BaseViewHolder, item: InfoBean) {
+
     }
 }
